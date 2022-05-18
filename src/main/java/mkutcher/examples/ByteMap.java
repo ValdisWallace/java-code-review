@@ -1,22 +1,28 @@
-class ByteMap {
+package main.java.mkutcher.examples;
 
-  private static final Map<byte[], byte[]> cache = new HashMap<byte[], byte[]>();
+import java.util.HashMap;
+import java.util.Map;
 
-  public static byte[] generate(byte[] src) {
-      byte[] generated = cache.get(src);
-      if (generated == null) {
-          synchronized (cache) {
-              generated = cache.get(src);
-              if (generated == null) {
-                  generated = doGenerate(src);
-                  cache.put(src, generated);
-              }
-          }
-      }
-      return generated;
-  }
+public class ByteMap {
 
-  private static byte[] doGenerate(byte[] src) {
-      // ommited
-  }
+    private static final Map<byte[], byte[]> cache = new HashMap<byte[], byte[]>();
+
+    public static byte[] generate(byte[] src) {
+        byte[] generated = cache.get(src);
+        if (generated == null) {
+            synchronized (cache) {
+                generated = cache.get(src);
+                if (generated == null) {
+                    generated = doGenerate(src);
+                    cache.put(src, generated);
+                }
+            }
+        }
+        return generated;
+    }
+
+    private static byte[] doGenerate(byte[] src) {
+        // omitted
+        return new byte[0];
+    }
 }
